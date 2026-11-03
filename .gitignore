@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------
+# Security guardrail: nothing in this file may ever be committed.
+# AWS credentials, .env secrets and Terraform state are scanned for
+# within seconds of being pushed to a public repository.
+# ---------------------------------------------------------------
+
+# Node dependencies & environment
+node_modules/
+.env
+.env.local
+.env.*.local
+build/
+dist/
+coverage/
+npm-debug.log*
+yarn-error.log*
+
+# Terraform runtime & state (CRITICAL: Never commit state files)
+.terraform/
+terraform/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfplan
+terraform.tfstate.d/
+crash.log
+.terraform.lock.hcl
+
+# AWS & provider credentials
+*.pem
+*.ppk
+*.key
+.aws/
+credentials
+
+# IDE & OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Templates are documentation, not secrets - keep them trackable
+!*.env.example
+!*.tfvars.example
